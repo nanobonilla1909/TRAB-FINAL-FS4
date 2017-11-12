@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->float('price');
  
             // Foreign Key
-            $table->integer('category_id')->unsigned();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
             $table->timestamps();
