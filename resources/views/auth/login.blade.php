@@ -14,20 +14,6 @@
 
                         {{ csrf_field() }}
 
-                        <div class="header header-primary text-center">
-                            <h4>Inicio de sesión</h4>
-                            <div class="social-line">
-                                <a href="#pablo" class="btn btn-simple btn-just-icon">
-                                    <i class="fa fa-facebook-square"></i>
-                                </a>
-                                <a href="#pablo" class="btn btn-simple btn-just-icon">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a href="#pablo" class="btn btn-simple btn-just-icon">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </div>
-                        </div>
                         <p class="text-divider">Ingresa tus datos</p>
                         <div class="content">
 
@@ -58,7 +44,7 @@
                             </div> 
                         </div>
                         <div class="footer text-center">
-                            <a href="#pablo" class="btn btn-simple btn-primary btn-lg">Ingresar</a>
+                            <button type="submit" class="btn btn-simple btn-primary btn-lg">Ingresar</a>
                         </div>
 
                         {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
