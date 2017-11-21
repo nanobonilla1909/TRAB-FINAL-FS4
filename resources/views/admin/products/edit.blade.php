@@ -12,15 +12,15 @@
         </div> --}}
 
         <div class="header header-filter" style="background-image: url('{{ asset('img/homebrew_background.jpg') }}'); background-size: cover; background-position: top center;">
-        </div>    
+        </div>  
 
         <div class="main main-raised">
             <div class="container">
 
                 <div class="section">
-                    <h2 class="title text-center">Registrar Nuevo Producto</h2>
+                    <h2 class="title text-center">Editar Producto Seleccionado</h2>
 
-                    <form method="post" action={{ url('/admin/products') }}>
+                    <form method="post" action={{ url('/admin/products/' . $product->id .'/edit') }}>
                         {{ csrf_field() }}
 
                         <div class="row">
@@ -28,14 +28,14 @@
                             <div class="col-sm-6">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Nombre del Producto</label>
-                                    <input type="text" class="form-control" name="name">
-                                </div>  
+                                    <input type="text" class="form-control" name="name" value="{{ $product->name }}">
+                                </div> 
                             </div>
-
+                            {{-- '***'.{{ $product->name }}; --}}
                             <div class="col-sm-6">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Precio del Producto</label>
-                                    <input type="number" class="form-control" name="price">
+                                    <input type="number" class="form-control" name="price"  value="{{ $product->price }}">
                                 </div>
                             </div>
 
@@ -44,13 +44,14 @@
                             
                         <div class="form-group label-floating">
                             <label class="control-label">Descripcion Corta</label>
-                            <input type="text" class="form-control" name="description">
+                            <input type="text" class="form-control" name="description"  value="{{ $product->description }}">
                         </div>
                           
 
-                        <textarea class="form-control" placeholder="Descripcion extensa del Producto" rows="5" name="long_description"></textarea>
+                        <textarea class="form-control" placeholder="Descripcion extensa del Producto" rows="5" name="long_description">{{ $product->long_description }}</textarea>
 
-                        <button class="btn btn-primary">Registrar Producto</button>
+                        <button class="btn btn-primary">Guardar Cambios</button>
+                        <a href="{{ url('/admin/products') }}" class="btn btn-default">Cancelar</a>
 
                     </form>    
 

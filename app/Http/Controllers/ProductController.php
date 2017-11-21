@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Product
+use App\Product;
 
 use Illuminate\Http\Request;
 
@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index() {
 
-    	$products = Product::all();
+    	$products = Product::paginate(10);
 
     	return view('admin.products.index')->with(compact('products')); // listado
 
@@ -20,17 +20,43 @@ class ProductController extends Controller
 
 		return view('admin.products.create'); // formulario de registro
 
+	    }
+
+	public function store(Request $request) {
+
+		// dd($request->all());
+		$product = new Product();
+		$product->name = $request->input('name');
+		$product->price = $request->input('price');
+		$product->description = $request->input('description');
+		$product->long_description = $request->input('long_description');
+		$product->save();
+
+		return redirect('/admin/products');
+
+	}
+
+
+	public function edit($id) {
+
+		$product = Product::find($id);
+		return view('admin.products.edit')->with(compact('product')); // formulario de registro
 
 	    }
 
-	public function store() {
+	public function update(Request $request, $id) {
 
-		// registra el nuevo producto
+		// dd($request->all());
+		$product = Product::find($id);
+		$product->name = $request->input('name');
+		$product->price = $request->input('price');
+		$product->description = $request->input('description');
+		$product->long_description = $request->input('long_description');
+		$product->save(); // update
 
+		return redirect('/admin/products');
 
-	    }
-
-
+	}
 
 
 }
